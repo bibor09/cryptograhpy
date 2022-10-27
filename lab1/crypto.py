@@ -40,15 +40,16 @@ def encrypt_vigenere(plaintext, keyword):
 
     Add more implementation details here.
     """
-    raise NotImplementedError  # Your implementation here
-
+    key = ''.join([keyword] * ((len(plaintext) // len(keyword) + 1))) 
+    return ''.join([ALPHABET[(ord(plaintext[i]) + ord(key[i])) % len(ALPHABET)] for i in range(len(plaintext))])
 
 def decrypt_vigenere(ciphertext, keyword):
     """Decrypt ciphertext using a Vigenere cipher with a keyword.
 
     Add more implementation details here.
     """
-    raise NotImplementedError  # Your implementation here
+    key = ''.join([keyword] * ((len(ciphertext) // len(keyword) + 1))) 
+    return ''.join([ALPHABET[(ord(ciphertext[i]) - ord(key[i])) % len(ALPHABET)] for i in range(len(ciphertext))])
 
 
 # Merkle-Hellman Knapsack Cryptosystem
