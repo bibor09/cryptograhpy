@@ -4,12 +4,16 @@ File: crypto.py
 ---------------
 Assignment 1: Cryptography
 Course: CS 41
-Name: <YOUR NAME>
-SUNet: <SUNet ID>
+Name: Adorjani Biborka
+SUNet: abim1985
 
 Replace this with a description of the program.
 """
 import utils
+import string
+
+ALPHABET = sorted(set(string.ascii_uppercase))
+k = 3
 
 # Caesar Cipher
 
@@ -18,7 +22,7 @@ def encrypt_caesar(plaintext):
 
     Add more implementation details here.
     """
-    raise NotImplementedError  # Your implementation here
+    return ''.join([ALPHABET[(ALPHABET.index(symbol) + k) % len(ALPHABET)] if symbol in ALPHABET else symbol for symbol in plaintext])
 
 
 def decrypt_caesar(ciphertext):
@@ -26,7 +30,7 @@ def decrypt_caesar(ciphertext):
 
     Add more implementation details here.
     """
-    raise NotImplementedError  # Your implementation here
+    return ''.join([ALPHABET[(ALPHABET.index(symbol) - k) % len(ALPHABET)] if symbol in ALPHABET else symbol for symbol in ciphertext])
 
 
 # Vigenere Cipher
