@@ -52,6 +52,28 @@ def decrypt_vigenere(ciphertext, keyword):
     return ''.join([ALPHABET[(ord(ciphertext[i]) - ord(key[i])) % len(ALPHABET)] for i in range(len(ciphertext))])
 
 
+# Scytale Cipher
+
+def encrypt_scytale(plaintext, circumference):
+    return ''.join(plaintext[slice(i, len(plaintext), circumference)] for i in range(circumference))
+
+def decrypt_scytale(ciphertext, circumference):
+    new_circum = len(ciphertext) // circumference
+    return ''.join(ciphertext[slice(i, len(ciphertext), new_circum)] for i in range(new_circum))
+
+
+# Railfence Cipher
+
+def encrypt_railfence(plaintext, num_rails):
+    # return ''.join(plaintext[slice(i, len(plaintext), num_rails)] for i in range(num_rails))
+    pass
+
+print(encrypt_railfence("WEAREDISCOVEREDFLEEATONCE", 3))
+
+def decrypt_railfence(ciphertext, num_rails):
+    pass
+
+
 # Merkle-Hellman Knapsack Cryptosystem
 
 def generate_private_key(n=8):
