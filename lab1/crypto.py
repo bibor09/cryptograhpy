@@ -22,7 +22,9 @@ def encrypt_caesar(plaintext):
 
     Add more implementation details here.
     """
-    return ''.join([ALPHABET[(ALPHABET.index(symbol) + k) % len(ALPHABET)] if symbol in ALPHABET else symbol for symbol in plaintext])
+    if len(plaintext) == 0:
+        return plaintext
+    return ''.join([ALPHABET[(ALPHABET.index(symbol) + k) % len(ALPHABET)] if symbol in ALPHABET else symbol for symbol in plaintext.upper()])
 
 
 def decrypt_caesar(ciphertext):
@@ -30,7 +32,9 @@ def decrypt_caesar(ciphertext):
 
     Add more implementation details here.
     """
-    return ''.join([ALPHABET[(ALPHABET.index(symbol) - k) % len(ALPHABET)] if symbol in ALPHABET else symbol for symbol in ciphertext])
+    if len(ciphertext) == 0:
+        return ciphertext
+    return ''.join([ALPHABET[(ALPHABET.index(symbol) - k) % len(ALPHABET)] if symbol in ALPHABET else symbol for symbol in ciphertext.upper()])
 
 
 # Vigenere Cipher
@@ -40,6 +44,11 @@ def encrypt_vigenere(plaintext, keyword):
 
     Add more implementation details here.
     """
+    if not plaintext.isalpha() or not keyword.isalpha():
+        return "The given text or keyword contains non alphabetic character."
+    if len(plaintext) == 0 or len(key) == 0:
+        return plaintext
+    plaintext = plaintext.upper()
     key = ''.join([keyword] * ((len(plaintext) // len(keyword) + 1))) 
     return ''.join([ALPHABET[(ord(plaintext[i]) + ord(key[i])) % len(ALPHABET)] for i in range(len(plaintext))])
 
@@ -48,6 +57,11 @@ def decrypt_vigenere(ciphertext, keyword):
 
     Add more implementation details here.
     """
+    if not ciphertext.isalpha() or not keyword.isalpha():
+        return "The given text or keyword contains non alphabetic character."
+    if len(ciphertext) == 0 or len(key) == 0:
+        return ciphertext
+    ciphertext = ciphertext.upper()
     key = ''.join([keyword] * ((len(ciphertext) // len(keyword) + 1))) 
     return ''.join([ALPHABET[(ord(ciphertext[i]) - ord(key[i])) % len(ALPHABET)] for i in range(len(ciphertext))])
 
