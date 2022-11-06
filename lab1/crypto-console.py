@@ -113,12 +113,17 @@ def clean_railfence(text):
 def run_caesar():
     action = get_action()
     encrypting = action == 'E'
-    data = clean_caesar(get_input(binary=False))
+    binary = _get_selection("(R)egular or (B)inary? ", "RB") in 'Bb'
+    print(binary)
+    if not binary:
+        data = clean_caesar(get_input(binary))
+    else:
+        data = get_input(binary)
 
     print("* Transform *")
     print("{}crypting {} using Caesar cipher...".format('En' if encrypting else 'De', data))
 
-    output = (encrypt_caesar if encrypting else decrypt_caesar)(data)
+    output = (encrypt_caesar if encrypting else decrypt_caesar)(data, binary)
 
     set_output(output)
 

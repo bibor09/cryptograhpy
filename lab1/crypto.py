@@ -17,14 +17,17 @@ k = 3
 
 # Caesar Cipher
 
-def encrypt_caesar(plaintext):
+def encrypt_caesar(plaintext, binary):
     """Encrypt plaintext using a Caesar cipher.
 
     Add more implementation details here.
     """
-    if len(plaintext) == 0:
-        return plaintext
-    return ''.join([ALPHABET[(ALPHABET.index(symbol) + k) % len(ALPHABET)] if symbol in ALPHABET else symbol for symbol in plaintext.upper()])
+    if not binary:
+        if len(plaintext) == 0:
+            return plaintext
+        return ''.join([ALPHABET[(ALPHABET.index(symbol) + k) % len(ALPHABET)] if symbol in ALPHABET else symbol for symbol in plaintext.upper()])
+    else:
+        return [(b + k) % 256 for b in plaintext]
 
 
 def decrypt_caesar(ciphertext):
