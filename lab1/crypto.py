@@ -65,14 +65,8 @@ def decrypt_scytale(ciphertext, circumference):
 # Railfence Cipher
 
 def encrypt_railfence(plaintext, num_rails):
-    # print(''.join(plaintext[i] for i in range(0, len(plaintext), num_rails*2-2)))
-    # print(''.join(plaintext[i] for i in range(1, len(plaintext), num_rails*2-2)))
-    # print(''.join(plaintext[i] for i in range(num_rails*2-3, len(plaintext), num_rails*2-2)))
-    # encrypted_text_list = [0 for i in range(len(plaintext))]
     encrypted_text = ''
     for i in range(1, num_rails-1):
-        # encrypted_text_list[i:len(plaintext):num_rails*2-2] = [plaintext[i] for i in range(i, len(plaintext), num_rails*2-2)]
-        # encrypted_text_list[num_rails*2-(2+i):len(plaintext):num_rails*2-2] = [plaintext[i] for i in range(num_rails*2-(2+i), len(plaintext), num_rails*2-2)]
         row1 = [plaintext[i] for i in range(i, len(plaintext), num_rails*2-2)]
         row2 = [plaintext[i] for i in range(num_rails*2-(2+i), len(plaintext), num_rails*2-2)]
         if row1 != row2:
@@ -83,10 +77,6 @@ def encrypt_railfence(plaintext, num_rails):
     encrypted_text = ''.join(plaintext[i] for i in range(0, len(plaintext), num_rails*2-2)) + encrypted_text + ''.join(plaintext[i] for i in range(num_rails-1, len(plaintext), num_rails*2-2))     
     print(encrypted_text)
 
-    # return ''.join(plaintext[slice(i, len(plaintext), num_rails)] for i in range(num_rails))
-    pass
-
-encrypt_railfence("WEAREDISCOVEREDFLEEATONCE", 3)
 
 def decrypt_railfence(ciphertext, num_rails):
     l = len(ciphertext)
@@ -114,8 +104,7 @@ def decrypt_railfence(ciphertext, num_rails):
         decrypted_text[num_rails*2-(2+i):l:num_rails*2-2] = list(rows[i])[slice(1,len(rows[i]),2)]
         
     return ''.join(decrypted_text)
-    
-print(decrypt_railfence("WECRLTEERDSOEEFEAOCAIVDEN", 3))
+
 
 # Merkle-Hellman Knapsack Cryptosystem
 
