@@ -75,7 +75,7 @@ def encrypt_railfence(plaintext, num_rails):
             merged[1:len(merged):2] = row2
             encrypted_text += ''.join(merged) 
     encrypted_text = ''.join(plaintext[i] for i in range(0, len(plaintext), num_rails*2-2)) + encrypted_text + ''.join(plaintext[i] for i in range(num_rails-1, len(plaintext), num_rails*2-2))     
-    print(encrypted_text)
+    return encrypted_text
 
 
 def decrypt_railfence(ciphertext, num_rails):
