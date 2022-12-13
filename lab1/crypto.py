@@ -49,10 +49,10 @@ def encrypt_vigenere(plaintext, keyword):
     """
     if not plaintext.isalpha() or not keyword.isalpha():
         return "The given text or keyword contains non alphabetic character."
-    if len(plaintext) == 0 or len(key) == 0:
+    if len(plaintext) == 0 or len(keyword) == 0:
         return plaintext
     plaintext = plaintext.upper()
-    key = ''.join([keyword] * ((len(plaintext) // len(keyword) + 1))) 
+    key = ''.join([keyword] * (len(plaintext) // len(keyword) + 1))
     return ''.join([ALPHABET[(ord(plaintext[i]) + ord(key[i])) % len(ALPHABET)] for i in range(len(plaintext))])
 
 def decrypt_vigenere(ciphertext, keyword):
@@ -62,10 +62,10 @@ def decrypt_vigenere(ciphertext, keyword):
     """
     if not ciphertext.isalpha() or not keyword.isalpha():
         return "The given text or keyword contains non alphabetic character."
-    if len(ciphertext) == 0 or len(key) == 0:
+    if len(ciphertext) == 0 or len(keyword) == 0:
         return ciphertext
     ciphertext = ciphertext.upper()
-    key = ''.join([keyword] * ((len(ciphertext) // len(keyword) + 1))) 
+    key = ''.join([keyword] * (len(ciphertext) // len(keyword) + 1)) 
     return ''.join([ALPHABET[(ord(ciphertext[i]) - ord(key[i])) % len(ALPHABET)] for i in range(len(ciphertext))])
 
 
